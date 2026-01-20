@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://buc21u4gdiyek" path="res://Enemy/enemy.gd" id="1_2pb1h"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xjnqo"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2pb1h"]
 radius = 1.0
 height = 3.0
 
 [node name="Enemy" type="PathFollow3D"]
-transform = Transform3D(-0.03631227, 0, -0.9993379, 0, 0.999999, 0, 0.9993373, 0, -0.036312293, 0, 1.3559101, 0)
+transform = Transform3D(-0.03631227, 0, -0.9993379, 0, 0.999999, 0, 0.9993373, 0, -0.036312293, 0, 0, 0)
 loop = false
 script = ExtResource("1_2pb1h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_xjnqo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CapsuleMesh_2pb1h")
