@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0hp12i56too8"]
+[gd_scene load_steps=11 format=3 uid="uid://b0hp12i56too8"]
 
 [ext_resource type="MeshLibrary" uid="uid://5x7oriesm1n5" path="res://MeshLibraries/space_library.tres" id="1_bo3yr"]
 [ext_resource type="PackedScene" uid="uid://po5q17b0v621" path="res://Enemy/enemy.tscn" id="2_5vx1e"]
+[ext_resource type="PackedScene" uid="uid://bjm3aimmxm1mh" path="res://base/base.tscn" id="3_eesb3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo3yr"]
 sky_top_color = Color(0.9, 0.9, 0.9, 1)
@@ -22,7 +23,7 @@ albedo_color = Color(0.27, 0.27, 0.27, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_bo3yr"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.707115, 0, 5.6609335, -1.382, 0, 0.828, 1.382, 0, -0.828, 13.496023, 0, 6.0618677, 2.276, 0, 0.506, -2.2760677, 0.5794077, -0.50649357, 12.7862835, 0, -9.639422, 1.1604013, -0.009036064, -1.1967468, -1.1604013, 0.009036064, 1.1967468, 2.0016594, 0, -9.285517, 0.96567726, 0, -1.2272832, -0.96567726, 0, 1.2272832, 1.814003, 0, -2.596926, 1.9031878, 0, 1.9623573, -1.9031878, 0, -1.9623573, -13.414345, 0, -2.7071884, 0, 0, 0, 0, 0, 0, -14.136696, 0, -14.48073),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.707115, 0, 5.6609335, -1.382, 0, 0.828, 1.382, 0, -0.828, 13.496023, 0, 6.0618677, 2.276, 0, 0.506, -2.2760677, 0.5794077, -0.50649357, 12.7862835, 0, -9.639422, 1.1604013, -0.009036064, -1.1967468, -1.1604013, 0.009036064, 1.1967468, 2.0016594, 0, -9.285517, 0.96567726, 0, -1.2272832, -0.96567726, 0, 1.2272832, 1.814003, 0, -2.596926, 1.9031878, 0, 1.9623573, -1.9031878, 0, -1.9623573, -13.414345, 0, -2.7071884, 0, 0, 0, 0, 0, 0, -14.136696, 0, -12.798513),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -106,4 +107,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_eesb3")
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("2_5vx1e")]
-transform = Transform3D(-0.036311988, 0, -0.9993333, 0, 0.9999942, 0, 0.9993295, 0, -0.036312126, -21.707115, 0, 5.6609335)
+transform = Transform3D(-0.036311187, 0, -0.9993261, 0, 0.9999896, 0, 0.9993074, 0, -0.036311865, -21.707115, 1.4988365, 5.6609335)
+
+[node name="Base" parent="." instance=ExtResource("3_eesb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.136696, 0, -12.798513)
