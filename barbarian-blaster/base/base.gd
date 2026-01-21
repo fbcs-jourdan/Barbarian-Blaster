@@ -21,7 +21,7 @@ var health : int :
 
 func _ready() -> void:
 	health = max_health
-	#label_3d.modulate = Color.RED
+
 
 func take_damage() -> void:
 	print("damage taken by base")

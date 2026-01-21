@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cffd2m2hhbgm5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pweg5"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vfthy"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2876l"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.75
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1p48p"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.4
+
+[node name="Turret" type="Node3D"]
+
+[node name="TurretBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_pweg5")
+
+[node name="TurretTop" type="MeshInstance3D" parent="TurretBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_vfthy")
+
+[node name="TurretBarrelRight" type="MeshInstance3D" parent="TurretBase/TurretTop"]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -1, 0, 1, -5.9604645e-08, -0.19746491, 0.028435946, 0.35391414)
+mesh = SubResource("CylinderMesh_2876l")
+skeleton = NodePath("../..")
+
+[node name="TurretBarrelLeft" type="MeshInstance3D" parent="TurretBase/TurretTop"]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -1, 0, 1, -5.9604645e-08, 0.19701788, 0.027999997, 0.34376067)
+mesh = SubResource("CylinderMesh_2876l")
+skeleton = NodePath("../..")
+
+[node name="TurretTubeRight" type="MeshInstance3D" parent="TurretBase/TurretTop"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.19746491, 0.028435946, 0.8949795)
+mesh = SubResource("CylinderMesh_1p48p")
+skeleton = NodePath("../..")
+
+[node name="TurretTubeLeft" type="MeshInstance3D" parent="TurretBase/TurretTop"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.20028591, 0.028435946, 0.8949795)
+mesh = SubResource("CylinderMesh_1p48p")
+skeleton = NodePath("../..")
