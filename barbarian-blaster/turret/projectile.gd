@@ -14,3 +14,11 @@ func _on_timer_timeout() -> void:
 
 func remove_proj() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area3D) -> void:
+	print(area)
+	if area.is_in_group("enemy_area"):
+		queue_free()
+		area.get_parent().health -= 25
+	

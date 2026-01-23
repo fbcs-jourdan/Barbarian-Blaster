@@ -21,7 +21,7 @@ var health : int :
 
 func _ready() -> void:
 	health = max_health
-
+	#Engine.time_scale = 1
 
 func take_damage() -> void:
 	print("damage taken by base")
