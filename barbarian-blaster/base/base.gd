@@ -24,5 +24,5 @@ func _ready() -> void:
 	#Engine.time_scale = 1
 
 func take_damage() -> void:
-	print("damage taken by base")
+	#print("damage taken by base")
 	health -= 1

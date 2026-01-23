@@ -10,11 +10,11 @@ var target : Node3D
 #turn and look at an enemy
 func _physics_process(delta: float) -> void:
 	target = find_best_target()
-	if target is Enemy:
+	if target != null:
 		look_at(target.global_position, Vector3.UP, true)
 
 func _on_timer_timeout() -> void:
-	if target is Enemy:
+	if target != null:
 		var proj = projectile.instantiate()
 		add_child(proj)
 		proj.global_position = global_position
