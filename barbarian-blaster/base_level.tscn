@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0hp12i56too8"]
+[gd_scene load_steps=16 format=3 uid="uid://b0hp12i56too8"]
 
 [ext_resource type="PackedScene" uid="uid://b5o6vtfubadqe" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_3o4py"]
 [ext_resource type="MeshLibrary" uid="uid://5x7oriesm1n5" path="res://MeshLibraries/space_library.tres" id="1_bo3yr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjm3aimmxm1mh" path="res://base/base.tscn" id="3_eesb3"]
 [ext_resource type="Script" uid="uid://bu0mmqas0o7ht" path="res://path_3d.gd" id="3_ftfrf"]
 [ext_resource type="PackedScene" uid="uid://bbobhpo7aul2n" path="res://turretmanager/turret_manager.tscn" id="5_ftfrf"]
+[ext_resource type="Script" uid="uid://cqj4mvv05d04g" path="res://bank.gd" id="7_2elnx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo3yr"]
 sky_top_color = Color(0.9, 0.9, 0.9, 1)
@@ -36,6 +37,11 @@ albedo_color = Color(0.22670749, 0.22670752, 0.22670743, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eesb3"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_u2wky"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
 [node name="BaseLevel" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -63,12 +69,12 @@ data = {
 "cells": PackedInt32Array(65535, 0, 131072, 65535, 2, 131072, 1, 65535, 131072, 2, 65535, 131072, 4, 65535, 131072, 65531, 0, 131072, 65531, 2, 131072, 65532, 2, 131072, 65533, 2, 131072, 65534, 2, 131072, 65532, 0, 131072, 65533, 0, 131072, 65534, 0, 131072, 0, 2, 131072, 1, 2, 131072, 2, 2, 131072, 3, 2, 131072, 4, 2, 131072, 4, 1, 131072, 4, 0, 131072, 1, 0, 131072, 0, 0, 131072, 2, 0, 131072, 65531, 65534, 131072, 65531, 65533, 131072, 65531, 65532, 131072, 65533, 65532, 131072, 65534, 65532, 131072, 65535, 65532, 131072, 0, 65532, 131072, 1, 65532, 131072, 2, 65532, 131072, 3, 65532, 131072, 4, 65532, 131072, 4, 65533, 131072, 4, 65534, 131072, 1, 65534, 131072, 2, 65534, 131072, 65535, 65534, 131072, 65534, 65534, 131072, 65534, 65533, 131072, 65533, 65533, 131072, 65535, 65533, 131072, 65533, 65534, 131072, 65531, 65535, 0)
 }
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="EnemyPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_bo3yr")
 script = ExtResource("3_ftfrf")
 enemy_scene = ExtResource("2_5vx1e")
 
-[node name="Road" type="CSGPolygon3D" parent="Path3D"]
+[node name="Road" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1, 0, -1, 0.3, 1, 0.3, 1, 0)
 mode = 2
 path_node = NodePath("..")
@@ -83,7 +89,7 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_5vx1e")
 
-[node name="LeftEdge" type="CSGPolygon3D" parent="Path3D"]
+[node name="LeftEdge" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1.1, 0, -1.1, 0.25, -0.9, 0.25, -0.9, 0)
 mode = 2
 path_node = NodePath("..")
@@ -98,7 +104,7 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_eesb3")
 
-[node name="RightEdge" type="CSGPolygon3D" parent="Path3D"]
+[node name="RightEdge" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(1.1, 0, 1.1, 0.25, 0.9, 0.25, 0.9, 0)
 mode = 2
 path_node = NodePath("..")
@@ -113,7 +119,7 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_eesb3")
 
-[node name="Timer" type="Timer" parent="Path3D"]
+[node name="Timer" type="Timer" parent="EnemyPath"]
 wait_time = 2.0
 autostart = true
 
@@ -121,6 +127,22 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.136696, 0, -12.798513)
 
 [node name="TurretManager" parent="." node_paths=PackedStringArray("enemy_path") instance=ExtResource("5_ftfrf")]
-enemy_path = NodePath("../Path3D")
+enemy_path = NodePath("../EnemyPath")
 
-[connection signal="timeout" from="Path3D/Timer" to="Path3D" method="_on_timer_timeout"]
+[node name="Bank" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_2elnx")
+
+[node name="Label" type="Label" parent="Bank"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Gold: 150"
+label_settings = SubResource("LabelSettings_u2wky")
+
+[connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
