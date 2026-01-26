@@ -6,12 +6,15 @@ var projectile = preload("res://turret/projectile.tscn")
 var enemy_path : Path3D
 var target : Node3D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 #turn and look at an enemy
 func _physics_process(delta: float) -> void:
 	target = find_best_target()
 	if target != null:
 		look_at(target.global_position, Vector3.UP, true)
+		animation_player.play("fire")
 
 func _on_timer_timeout() -> void:
 	if target != null:
@@ -19,6 +22,7 @@ func _on_timer_timeout() -> void:
 		add_child(proj)
 		proj.global_position = global_position
 		proj.direction = global_transform.basis.z
+		animation_player.play("fire")
 		
 func find_best_target() -> Enemy:
 	var best_target = null

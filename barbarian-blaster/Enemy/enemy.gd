@@ -5,13 +5,17 @@ class_name Enemy
 @export var max_health := 50
 
 @onready var base : Base = get_tree().get_first_node_in_group("Base")
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var health : int :
 	set(new_health):
+		if health > new_health:
+			animation_player.play("take_damage")
 		health = new_health
 		if health < 1:
 			queue_free()
+			
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,5 +28,6 @@ func _process(delta: float) -> void:
 	progress += delta * speed
 	if progress_ratio == 1.0:
 		base.take_damage()
+		
 		queue_free()
 	
