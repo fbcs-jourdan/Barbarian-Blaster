@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0hp12i56too8"]
+[gd_scene load_steps=17 format=3 uid="uid://b0hp12i56too8"]
 
 [ext_resource type="PackedScene" uid="uid://b5o6vtfubadqe" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_3o4py"]
 [ext_resource type="MeshLibrary" uid="uid://5x7oriesm1n5" path="res://MeshLibraries/space_library.tres" id="1_bo3yr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bu0mmqas0o7ht" path="res://path_3d.gd" id="3_ftfrf"]
 [ext_resource type="PackedScene" uid="uid://bbobhpo7aul2n" path="res://turretmanager/turret_manager.tscn" id="5_ftfrf"]
 [ext_resource type="Script" uid="uid://cqj4mvv05d04g" path="res://bank.gd" id="7_2elnx"]
+[ext_resource type="PackedScene" uid="uid://beu57ua3so805" path="res://difficulty_manager/difficulty_manager.tscn" id="8_bkkah"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo3yr"]
 sky_top_color = Color(0.9, 0.9, 0.9, 1)
@@ -69,10 +70,11 @@ data = {
 "cells": PackedInt32Array(65535, 0, 131072, 65535, 2, 131072, 1, 65535, 131072, 2, 65535, 131072, 4, 65535, 131072, 65531, 0, 131072, 65531, 2, 131072, 65532, 2, 131072, 65533, 2, 131072, 65534, 2, 131072, 65532, 0, 131072, 65533, 0, 131072, 65534, 0, 131072, 0, 2, 131072, 1, 2, 131072, 2, 2, 131072, 3, 2, 131072, 4, 2, 131072, 4, 1, 131072, 4, 0, 131072, 1, 0, 131072, 0, 0, 131072, 2, 0, 131072, 65531, 65534, 131072, 65531, 65533, 131072, 65531, 65532, 131072, 65533, 65532, 131072, 65534, 65532, 131072, 65535, 65532, 131072, 0, 65532, 131072, 1, 65532, 131072, 2, 65532, 131072, 3, 65532, 131072, 4, 65532, 131072, 4, 65533, 131072, 4, 65534, 131072, 1, 65534, 131072, 2, 65534, 131072, 65535, 65534, 131072, 65534, 65534, 131072, 65534, 65533, 131072, 65533, 65533, 131072, 65535, 65533, 131072, 65533, 65534, 131072, 65531, 65535, 0)
 }
 
-[node name="EnemyPath" type="Path3D" parent="."]
+[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager")]
 curve = SubResource("Curve3D_bo3yr")
 script = ExtResource("3_ftfrf")
 enemy_scene = ExtResource("2_5vx1e")
+difficulty_manager = NodePath("../DifficultyManager")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1, 0, -1, 0.3, 1, 0.3, 1, 0)
@@ -144,5 +146,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Gold: 150"
 label_settings = SubResource("LabelSettings_u2wky")
+
+[node name="DifficultyManager" parent="." instance=ExtResource("8_bkkah")]
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
