@@ -3,11 +3,14 @@ class_name Enemy
 ## The speed in m/s the enemy will move
 @export var speed :float = 10.0
 @export var max_health := 50
+@export var gold_earned := 25
+
+
 
 @onready var base : Base = get_tree().get_first_node_in_group("Base")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-
+@onready var bank := get_tree().get_first_node_in_group("Bank")
 var health : int :
 	set(new_health):
 		if health > new_health:
@@ -15,6 +18,7 @@ var health : int :
 		health = new_health
 		if health < 1:
 			queue_free()
+			bank.gold += gold_earned
 			
 
 

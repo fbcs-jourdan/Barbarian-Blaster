@@ -129,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.136696, 0, -12.798513)
 [node name="TurretManager" parent="." node_paths=PackedStringArray("enemy_path") instance=ExtResource("5_ftfrf")]
 enemy_path = NodePath("../EnemyPath")
 
-[node name="Bank" type="MarginContainer" parent="."]
+[node name="Bank" type="MarginContainer" parent="." groups=["Bank"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -138,7 +138,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_2elnx")
 
-[node name="Label" type="Label" parent="Bank"]
+[node name="Label" type="Label" parent="Bank" groups=["Bank"]]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
