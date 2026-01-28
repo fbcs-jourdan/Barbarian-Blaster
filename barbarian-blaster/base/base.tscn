@@ -1,21 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjm3aimmxm1mh"]
+[gd_scene format=3 uid="uid://bjm3aimmxm1mh"]
 
 [ext_resource type="Script" uid="uid://det5rhtxkwbmr" path="res://base/base.gd" id="1_mftly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o4py"]
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="Base" type="Node3D" groups=["Base"]]
+[node name="Base" type="Node3D" unique_id=1800652194 groups=["Base"]]
 script = ExtResource("1_mftly")
+max_health = 500
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=594152398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 radius = 2.0
 height = 4.0
 sides = 32
 material = SubResource("StandardMaterial3D_3o4py")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=692258055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2380233, 0)
 billboard = 1
 no_depth_test = true

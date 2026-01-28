@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://po5q17b0v621"]
+[gd_scene format=3 uid="uid://po5q17b0v621"]
 
 [ext_resource type="Script" uid="uid://buc21u4gdiyek" path="res://Enemy/enemy.gd" id="1_2pb1h"]
 
@@ -18,21 +18,6 @@ shading_mode = 0
 radius = 1.0
 height = 3.0
 
-[sub_resource type="Animation" id="Animation_am0pq"]
-resource_name = "take_damage"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DamageHighlight:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_eqilm"]
 length = 0.001
 tracks/0/type = "value"
@@ -48,33 +33,48 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_am0pq"]
+resource_name = "take_damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ncf7h"]
 _data = {
 &"RESET": SubResource("Animation_eqilm"),
 &"take_damage": SubResource("Animation_am0pq")
 }
 
-[node name="Enemy" type="PathFollow3D"]
+[node name="Enemy" type="PathFollow3D" unique_id=1643802741]
 loop = false
 script = ExtResource("1_2pb1h")
+speed = 7.0
+gold_earned = 2802
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1929026556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 mesh = SubResource("CapsuleMesh_2pb1h")
 
-[node name="DamageHighlight" type="MeshInstance3D" parent="."]
+[node name="DamageHighlight" type="MeshInstance3D" parent="." unique_id=601292916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_px1sc")
 mesh = SubResource("CapsuleMesh_2pb1h")
 
-[node name="EnemyArea3D" type="Area3D" parent="." groups=["enemy_area"]]
+[node name="EnemyArea3D" type="Area3D" parent="." unique_id=777135645 groups=["enemy_area"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyArea3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyArea3D" unique_id=269614115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_2pb1h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ncf7h")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=222329511]
+libraries/ = SubResource("AnimationLibrary_ncf7h")
