@@ -151,6 +151,7 @@ label_settings = SubResource("LabelSettings_u2wky")
 [node name="DifficultyManager" parent="." unique_id=1871757519 instance=ExtResource("8_bkkah")]
 
 [node name="VictoryLayer" parent="." unique_id=1209184862 instance=ExtResource("9_xjg0i")]
+visible = false
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="_on_timer_timeout"]
 [connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
