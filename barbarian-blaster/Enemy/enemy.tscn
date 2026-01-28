@@ -58,7 +58,7 @@ _data = {
 loop = false
 script = ExtResource("1_2pb1h")
 speed = 7.0
-gold_earned = 2802
+gold_earned = 9999999
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1929026556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
