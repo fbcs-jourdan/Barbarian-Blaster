@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjm3aimmxm1mh"]
 
 [ext_resource type="Script" uid="uid://det5rhtxkwbmr" path="res://base/base.gd" id="1_mftly"]
+[ext_resource type="PackedScene" uid="uid://cd5vfhgg032vc" path="res://assets/Meshes/Base.glb" id="2_m7viw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o4py"]
 albedo_color = Color(1, 0, 0, 1)
@@ -11,6 +12,7 @@ max_health = 500
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=594152398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
 radius = 2.0
 height = 4.0
 sides = 32
@@ -23,3 +25,5 @@ no_depth_test = true
 text = "5"
 font_size = 500
 outline_size = 100
+
+[node name="Base" parent="." unique_id=1938167195 instance=ExtResource("2_m7viw")]

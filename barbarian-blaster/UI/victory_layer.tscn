@@ -83,11 +83,13 @@ text = "Survived +1"
 
 [node name="HealthLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/LabelContainer" unique_id=1036833767]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Health +1"
 
 [node name="GoldLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/LabelContainer" unique_id=225476010]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "money money money +1"
 
