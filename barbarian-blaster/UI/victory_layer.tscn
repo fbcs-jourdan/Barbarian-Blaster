@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dscxl1xhgdg0p"]
 
 [ext_resource type="Script" uid="uid://dmjfonpk6ukvf" path="res://UI/victory_layer.gd" id="1_12kce"]
+[ext_resource type="Texture2D" uid="uid://dmx8ec56end48" path="res://assets/star.png" id="2_eu0p7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ykwpl"]
 font_size = 100
@@ -42,6 +43,53 @@ layout_mode = 2
 text = "Victory"
 label_settings = SubResource("LabelSettings_ykwpl")
 horizontal_alignment = 1
+
+[node name="StarContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=833888320]
+layout_mode = 2
+
+[node name="Star1" type="TextureRect" parent="CenterContainer/Panel/VBoxContainer/StarContainer" unique_id=2070604895]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_eu0p7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="CenterContainer/Panel/VBoxContainer/StarContainer" unique_id=1957485523]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_eu0p7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="CenterContainer/Panel/VBoxContainer/StarContainer" unique_id=572111676]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_eu0p7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="LabelContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=1330364674]
+layout_mode = 2
+theme_override_constants/separation = 23
+
+[node name="SurvivedLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/LabelContainer" unique_id=386467418]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Survived +1"
+
+[node name="HealthLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/LabelContainer" unique_id=1036833767]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health +1"
+
+[node name="GoldLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/LabelContainer" unique_id=225476010]
+unique_name_in_owner = true
+layout_mode = 2
+text = "money money money +1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=868847729]
 layout_mode = 2
