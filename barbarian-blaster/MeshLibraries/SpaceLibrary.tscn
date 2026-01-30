@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ds6xwdamrvg6v" path="res://assets/Meshes/Rocks.glb" id="2_pou1f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ifug"]
-albedo_color = Color(0.89411765, 0.89411765, 0.89411765, 1)
+albedo_color = Color(0.15938887, 0.40368602, 0.13363603, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2a4ik"]
 material = SubResource("StandardMaterial3D_6ifug")

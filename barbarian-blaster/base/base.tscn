@@ -8,7 +8,7 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="Base" type="Node3D" unique_id=1800652194 groups=["Base"]]
 script = ExtResource("1_mftly")
-max_health = 500
+max_health = 10
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=594152398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

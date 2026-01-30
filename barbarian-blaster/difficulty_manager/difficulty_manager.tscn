@@ -14,6 +14,7 @@ point_count = 2
 
 [node name="DifficultyManager" type="Node" unique_id=678254318]
 script = ExtResource("1_yfgee")
+game_length = 180
 spawn_time_curve = SubResource("Curve_yfgee")
 enemy_heath_curve = SubResource("Curve_botnv")
 
